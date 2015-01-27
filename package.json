@@ -1,0 +1,17 @@
+{
+  "name": "squall",
+  "author": "jden <jason@denizac.org>",
+  "version": "1.0.0",
+  "description": "cluster boilerplate",
+  "keywords": ["server cluster"],
+  "main": "index.js",
+  "scripts": {
+    "test": "mochi"
+  },
+  "repository": "git@github.com:jden/squall.git",
+  "license": "ISC",
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "mochi": "0.3.0"
+  }
+}
