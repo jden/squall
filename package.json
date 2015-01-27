@@ -6,12 +6,14 @@
   "keywords": ["server cluster"],
   "main": "index.js",
   "scripts": {
-    "test": "mochi"
+    "test": "node test"
   },
   "repository": "git@github.com:jden/squall.git",
   "license": "ISC",
   "readmeFilename": "README.md",
-  "devDependencies": {
-    "mochi": "0.3.0"
+  "jshintConfig": {
+    "node": true,
+    "asi": true,
+    "strict": false
   }
 }
