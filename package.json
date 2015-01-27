@@ -3,7 +3,9 @@
   "author": "jden <jason@denizac.org>",
   "version": "1.0.0",
   "description": "cluster boilerplate",
-  "keywords": ["server cluster"],
+  "keywords": [
+    "server cluster"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "node test"
@@ -15,5 +17,9 @@
     "node": true,
     "asi": true,
     "strict": false
+  },
+  "dependencies": {
+    "bluebird": "^2.9.3",
+    "xtend": "^4.0.0"
   }
 }
