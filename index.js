@@ -12,19 +12,19 @@ var defaults = {
   logger: console
 }
 
-function squall (config) {
-  if (!config || typeof config.worker !== 'function' ) {
-    throw new TypeError('config.worker must be a function')
+function squall (opts) {
+  if (!opts || typeof opts.worker !== 'function' ) {
+    throw new TypeError('opts.worker must be a function')
   }
   
-  var effective = extend(config, defaults)
-  logger = effective.logger
+  var config = extend(opts, defaults)
+  logger = config.logger
   
   if (cluster.isWorker) {
-    effective.worker()
+    config.worker()
   } else {
-    Promise.resolve(effective.init())
-    .then(effective.leader(config))
+    Promise.resolve(config.init())
+    .then(config.leader(config))
   }
 
   return cluster
