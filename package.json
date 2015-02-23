@@ -1,7 +1,7 @@
 {
   "name": "squall",
   "author": "jden <jason@denizac.org>",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "cluster boilerplate",
   "keywords": [
     "server cluster"
