@@ -17,7 +17,7 @@ function squall (opts) {
     throw new TypeError('opts.worker must be a function')
   }
   
-  var config = extend(opts, defaults)
+  var config = extend(defaults, opts)
   logger = config.logger
   
   if (cluster.isWorker) {
@@ -47,7 +47,6 @@ function maxCpusStrategy (config) {
   cluster.on('exit', function (worker) {
     logger.log('cluster worker died (pid=' + worker.process.pid + ').')
     if (!ended && Object.keys(cluster.workers).length === 0) {
-      console.log('x')
       ended = true
       config.end()
     }
@@ -72,8 +71,20 @@ function maxCpusRestartStrategy () {
   })
 }
 
+function singleStrategy (config) {
+  cluster.fork()
+  cluster.on('online', function (worker) {
+    logger.log('cluster worker running (pid=' + worker.process.pid + ')')
+  })
+  cluster.on('exit', function (worker) {
+    logger.log('cluster worker died (pid=' + worker.process.pid + ').')
+    config.end()
+  })
+}
+
 
 
 module.exports = squall
-module.exports.maxCpusStrategy = maxCpusStrategy
-module.exports.maxCpusRestartStrategy = maxCpusRestartStrategy
+squall.maxCpusStrategy = maxCpusStrategy
+squall.maxCpusRestartStrategy = maxCpusRestartStrategy
+squall.singleStrategy = singleStrategy
