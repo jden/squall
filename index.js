@@ -24,7 +24,9 @@ function squall (opts) {
     config.worker()
   } else {
     Promise.resolve(config.init())
-    .then(config.leader(config))
+    .then(function () {
+      config.leader(config)
+    })
   }
 
   return cluster
